@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins-example
+spec:
+  replicas: 1
+  serviceName: jenkins-example
+  selector:
+    matchLabels:
+      app: jenkins-example
+  template:
+    metadata:
+      labels:
+        app: jenkins-example
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        resources:
+          requests:
+            cpu: 250m
+            memory: 1Gi # Genesis 2 seems unusually memory hungry
+          limits:
+            cpu: 900m
+            memory: 2.5Gi
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+        env:
+        - name: JAVA_OPTS
+          value: -Djenkins.install.runSetupWizard=false
+      volumes:
+      # By default simply use an emptyDir volume that only lives for the life of the pod
+      - name: jenkins-home
+        emptyDir: {}
