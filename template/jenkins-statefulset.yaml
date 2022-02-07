@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: jenkins-example
+  name: ${{ parameters.name }}
 spec:
   replicas: 1
-  serviceName: jenkins-example
+  serviceName: ${{ parameters.name }}
   selector:
     matchLabels:
-      app: jenkins-example
+      app: ${{ parameters.name }}
   template:
     metadata:
       labels:
-        app: jenkins-example
+        app: ${{ parameters.name }}
     spec:
       containers:
       - name: jenkins

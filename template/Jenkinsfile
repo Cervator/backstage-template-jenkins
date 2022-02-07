@@ -24,6 +24,7 @@ pipeline {
                         kubectl get svc -n backstage
                         sleep 15
                         kubectl get svc -n backstage
+                        echo ${{ paramters.name }} ready maybe!
                     '''
                 }
             }
