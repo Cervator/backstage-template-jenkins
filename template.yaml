@@ -43,7 +43,7 @@ spec:
         url: ./template
         values:
           name: ${{ parameters.name }}
-          repoUrl: ${{ parameters.repoUrl }}
+          #repoUrl: ${{ parameters.repoUrl }}
 
 #    - id: fetch-docs
 #      name: Fetch Docs
