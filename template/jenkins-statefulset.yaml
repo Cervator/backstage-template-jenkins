@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: ${{ parameters.name }}
+  name: ${{ values.name }}
 spec:
   replicas: 1
-  serviceName: ${{ parameters.name }}
+  serviceName: ${{ values.name }}
   selector:
     matchLabels:
-      app: ${{ parameters.name }}
+      app: ${{ values.name }}
   template:
     metadata:
       labels:
-        app: ${{ parameters.name }}
+        app: ${{ values.name }}
     spec:
       containers:
       - name: jenkins
@@ -19,7 +19,7 @@ spec:
         resources:
           requests:
             cpu: 250m
-            memory: 1Gi # Genesis 2 seems unusually memory hungry
+            memory: 1Gi
           limits:
             cpu: 900m
             memory: 2.5Gi
