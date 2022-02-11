@@ -44,6 +44,9 @@ spec:
         values:
           name: ${{ parameters.name }}
           gitOwnerRepo: ${{ parameters.repoUrl }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          theOwner: ${{ parameters.owner }}
+          repoName: ${{ parameters.repoName }}
 
 #    - id: fetch-docs
 #      name: Fetch Docs
