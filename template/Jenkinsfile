@@ -6,16 +6,6 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-
-              name: ${{ values.name }}
-              gitOwnerRepo: ${{ values.gitOwnerRepo }}
-              destination: ${{ values.destination }}
-              destinationOwner: ${{ values.destination.owner }}
-              destinationRepo: ${{ values.destination.repo }}
-              theOwner: ${{ values.theOwner }}
-              repoName: ${{ values.repoName }}
-              values: ${{ values }}
-
                 git url: 'https://github.com/${{values.destination.owner + "/" + values.destination.repo}}.git'
                 withKubeConfig(clusterName: 'cluster-1', credentialsId: 'backstage-sa-token-avst', serverUrl: 'https://34.132.60.24') {
                     sh '''
