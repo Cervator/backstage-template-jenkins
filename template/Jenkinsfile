@@ -16,7 +16,7 @@ pipeline {
               repoName: ${{ values.repoName }}
               values: ${{ values }}
 
-                git url: 'https://github.com/${{ values.gitOwnerRepo }}.git'
+                git url: 'https://github.com/${{values.destination.owner + "/" + values.destination.repo}}.git'
                 withKubeConfig(clusterName: 'cluster-1', credentialsId: 'backstage-sa-token-avst', serverUrl: 'https://34.132.60.24') {
                     sh '''
                         whoami
