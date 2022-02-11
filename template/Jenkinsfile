@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                git url: 'https://github.com/Cervator/backstage-template-jenkins.git'
+                git url: 'https://github.com/${{ values.gitOwner }}/${{ values.gitRepo }}.git'
                 withKubeConfig(clusterName: 'cluster-1', credentialsId: 'backstage-sa-token-avst', serverUrl: 'https://34.132.60.24') {
                     sh '''
                         whoami

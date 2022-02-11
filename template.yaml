@@ -43,7 +43,8 @@ spec:
         url: ./template
         values:
           name: ${{ parameters.name }}
-          #repoUrl: ${{ parameters.repoUrl }}
+          gitOwner: ${{ parameters.repoUrl.owner }}
+          gitRepo: ${{ parameters.repoUrl.repo }}
 
 #    - id: fetch-docs
 #      name: Fetch Docs
