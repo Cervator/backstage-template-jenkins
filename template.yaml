@@ -43,8 +43,7 @@ spec:
         url: ./template
         values:
           name: ${{ parameters.name }}
-          gitOwner: ${{ parameters.repoUrl.owner }}
-          gitRepo: ${{ parameters.repoUrl.repo }}
+          gitOwnerRepo: ${{ parameters.repoUrl }}
 
 #    - id: fetch-docs
 #      name: Fetch Docs
@@ -58,7 +57,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
+        description: This is ${{ parameters.name }} for ${{ parameters.repoUrl }}
         repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
